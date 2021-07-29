@@ -9,13 +9,13 @@ export interface Options {
   /**
    * Milliseconds to wait before writing the package.json file.
    *
-   * @default 5000
+   * @default 10000
    */
   delay?: number
 }
 
 function VitePluginPackageConfig(options: Options = {}): Plugin {
-  const delay = options.delay || 5000
+  const delay = options.delay || 10000
 
   return <Plugin> {
     name: 'hi',
