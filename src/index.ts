@@ -21,7 +21,7 @@ function VitePluginPackageConfig(options: Options = {}): Plugin {
     name: 'hi',
     apply: 'serve',
     configureServer(server) {
-      const pkgConfig: Required<PkgConfigOptions> = server.config.plugins.find(i => i.name === 'vite-plugin-package-config')?.api.options
+      const pkgConfig: Required<PkgConfigOptions> = (server.config.plugins as any).find((i: any) => i.name === 'vite-plugin-package-config')?.api.options
 
       if (!pkgConfig)
         throw new Error('[vite-config-optimize-persist] plugin "vite-plugin-package-config" not found, have you installed it ?')
