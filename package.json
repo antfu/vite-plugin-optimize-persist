@@ -1,0 +1,59 @@
+{
+  "name": "vite-plugin-optimize-persist",
+  "version": "0.0.0",
+  "description": "Persist dynamically analyzed deps optimization",
+  "keywords": [
+    "vite-plugin"
+  ],
+  "homepage": "https://github.com/antfu/vite-plugin-optimize-persist#readme",
+  "bugs": {
+    "url": "https://github.com/antfu/vite-plugin-optimize-persist/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/vite-plugin-optimize-persist.git"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "dev": "npm run build -- --watch",
+    "release": "bumpp --commit --push --tag && npm publish",
+    "lint": "eslint \"{src,test}/**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest"
+  },
+  "dependencies": {
+    "debug": "^4.3.2",
+    "fs-extra": "^10.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.6.4",
+    "@antfu/ni": "^0.5.8",
+    "@antfu/utils": "^0.1.4",
+    "@types/debug": "^4.1.7",
+    "@types/fs-extra": "^9.0.11",
+    "@types/node": "^14.14.41",
+    "bumpp": "^6.0.6",
+    "eslint": "^7.24.0",
+    "eslint-plugin-jest": "^24.3.5",
+    "esno": "^0.5.0",
+    "tsup": "^4.12.5",
+    "typescript": "^4.2.4",
+    "vite": "^2.2.1",
+    "vite-plugin-package-config": "^0.0.2"
+  },
+  "peerDependencies": {
+    "vite": "^2.0.0",
+    "vite-plugin-package-config": "^0.0.3"
+  }
+}

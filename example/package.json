@@ -1,0 +1,26 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "DEBUG=vite-plugin-optimize-persist vite --force",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.171",
+    "lodash": "^4.17.21",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.4",
+    "vite-plugin-optimize-persist": "workspace:*"
+  },
+  "vite": {
+    "define": {
+      "__NAME__": "\"Package Config\""
+    },
+    "optimizeDeps": {
+      "include": [
+        "lodash/upperCase"
+      ]
+    }
+  }
+}
