@@ -28,6 +28,7 @@ With `vite-plugin-optimize-persist`, it will persist the names of the dynamic de
   "vite": {
     "optimizeDeps": {
       "include": [
+        // managed by `vite-plugin-optimize-persist`
         "@material-ui/core/Accordion",
         "@material-ui/core/AccordionSummary",
         "@material-ui/core/Dialog",
