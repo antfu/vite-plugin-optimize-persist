@@ -9,13 +9,13 @@ export interface Options {
   /**
    * Milliseconds to wait before writing the package.json file.
    *
-   * @default 10000
+   * @default 1000
    */
   delay?: number
 }
 
 function VitePluginPackageConfig(options: Options = {}): Plugin {
-  const delay = options.delay || 10000
+  const delay = options.delay || 1000
 
   return <Plugin> {
     name: 'hi',
@@ -39,11 +39,13 @@ function VitePluginPackageConfig(options: Options = {}): Plugin {
         debug('newDeps', newDeps)
 
         clearTimeout(timer)
-        if (newDeps.length)
-          timer = setTimeout(write, delay)
+        timer = setTimeout(write, delay)
       }
 
       async function write() {
+        if (!newDeps.length)
+          return
+
         debug(`writting to ${pkgConfig.packageJsonPath}`)
         const pkg = await fs.readJSON(pkgConfig.packageJsonPath)
         pkg[pkgConfig.field] = pkg[pkgConfig.field] || {}
@@ -54,7 +56,10 @@ function VitePluginPackageConfig(options: Options = {}): Plugin {
           ...newDeps,
         ]))
         extend.optimizeDeps.include.sort()
+        server.watcher.unwatch(pkgConfig.packageJsonPath)
         await fs.writeJSON(pkgConfig.packageJsonPath, pkg, { spaces: 2 })
+        server.watcher.add(pkgConfig.packageJsonPath)
+        debug('written')
       }
 
       Object.defineProperty(server, '_optimizeDepsMetadata', {

@@ -19,6 +19,8 @@
     },
     "optimizeDeps": {
       "include": [
+        "lodash/map",
+        "lodash/set",
         "lodash/upperCase"
       ]
     }
