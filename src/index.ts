@@ -39,7 +39,8 @@ function VitePluginPackageConfig(options: Options = {}): Plugin {
         debug('newDeps', newDeps)
 
         clearTimeout(timer)
-        timer = setTimeout(write, delay)
+        if (newDeps.length)
+          timer = setTimeout(write, delay)
       }
 
       async function write() {
@@ -52,6 +53,7 @@ function VitePluginPackageConfig(options: Options = {}): Plugin {
           ...(extend.optimizeDeps.include || []),
           ...newDeps,
         ]))
+        extend.optimizeDeps.include.sort()
         await fs.writeJSON(pkgConfig.packageJsonPath, pkg, { spaces: 2 })
       }
 
