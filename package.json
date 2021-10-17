@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-optimize-persist",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Persist dynamically analyzed deps optimization",
   "keywords": [
     "vite-plugin"
