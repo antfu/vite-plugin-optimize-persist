@@ -12,10 +12,16 @@ export interface Options {
    * @default 1000
    */
   delay?: number
+
+  /**
+   * Filter predictor for modules to include
+   *
+   * @default truthy predictor
+   */
+  filter?: (includeModule: string) => boolean
 }
 
-function VitePluginPackageConfig(options: Options = {}): Plugin {
-  const delay = options.delay || 1000
+function VitePluginPackageConfig({ delay = 1000, filter = () => true }: Options = {}): Plugin {
 
   return <Plugin> {
     name: 'hi',
@@ -35,7 +41,9 @@ function VitePluginPackageConfig(options: Options = {}): Plugin {
       function update() {
         newDeps = Object.keys(
           optimizeDepsMetadata?.optimized || {},
-        ).filter(i => !forceIncluded.includes(i))
+        )
+          .filter(i => !forceIncluded.includes(i))
+          .filter(filter)
         debug('newDeps', newDeps)
 
         clearTimeout(timer)
