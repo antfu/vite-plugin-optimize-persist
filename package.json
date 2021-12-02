@@ -50,10 +50,10 @@
     "tsup": "^4.12.5",
     "typescript": "^4.2.4",
     "vite": "^2.2.1",
-    "vite-plugin-package-config": "^0.0.2"
+    "vite-plugin-package-config": "^0.1.0"
   },
   "peerDependencies": {
     "vite": "^2.0.0",
-    "vite-plugin-package-config": "^0.0.3"
+    "vite-plugin-package-config": "^0.1.0"
   }
 }
