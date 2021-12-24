@@ -23,7 +23,7 @@ export interface Options {
 
 function VitePluginOptimizePersist({ delay = 1000, filter = () => true }: Options = {}): Plugin {
   return {
-    name: 'hi',
+    name: 'vite-plugin-optimize-persist',
     apply: 'serve',
     configureServer(server) {
       const vitePluginPackageConfigPlugin = server.config.plugins.find(plugin => plugin.name === 'vite-plugin-package-config') as VitePluginPackageConfigPlugin | undefined
