@@ -19,7 +19,7 @@ importers:
       tsup: ^4.12.5
       typescript: ^4.2.4
       vite: ^2.2.1
-      vite-plugin-package-config: ^0.1.0
+      vite-plugin-package-config: ^0.1.1
     dependencies:
       debug: 4.3.2
       fs-extra: 10.0.0
@@ -37,7 +37,7 @@ importers:
       tsup: 4.12.5_typescript@4.2.4
       typescript: 4.2.4
       vite: 2.2.1
-      vite-plugin-package-config: 0.1.0_vite@2.2.1
+      vite-plugin-package-config: 0.1.1_vite@2.2.1
 
   example:
     specifiers:
@@ -2998,8 +2998,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-package-config/0.1.0_vite@2.2.1:
-    resolution: {integrity: sha512-cnj/PiugW8EJIaDaorSygKL85GqdLz/oLg031YD0/tF1wiGGz3jkrpkUvZauDqJmR7vpLGnP+zVxQvmXbXjIXQ==}
+  /vite-plugin-package-config/0.1.1_vite@2.2.1:
+    resolution: {integrity: sha512-w9B3I8ZnqoyhlbzimXjXNk85imrMZgvI9m8f6j3zonK5IVA5KXzpT+PZOHlDz8lqh1vqvoEI1uhy+ZDoLAiA/w==}
     peerDependencies:
       vite: ^2.0.0
     dependencies:
