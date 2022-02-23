@@ -2,6 +2,7 @@ import fs from 'fs-extra'
 import _debug from 'debug'
 import type { Plugin } from 'vite'
 import type { VitePluginPackageConfigPlugin } from 'vite-plugin-package-config'
+import { isPackageExists } from 'local-pkg'
 
 const debug = _debug('vite-plugin-optimize-persist')
 
@@ -36,7 +37,20 @@ function VitePluginOptimizePersist({ delay = 1000, filter = () => true }: Option
 
       // @ts-expect-error
       let optimizeDepsMetadata: { optimized: Record<string, string> } | undefined = server._ssrExternals
+
+      let shouldReset = false
+
+      if (server.config?.optimizeDeps?.include) {
+        server.config.optimizeDeps.include = server.config.optimizeDeps.include.filter((pkg) => {
+          const exists = isPackageExists(pkg)
+          if (!exists)
+            shouldReset = true
+          return exists
+        })
+      }
+
       const forceIncluded = server.config?.optimizeDeps?.include || []
+
       let newDeps: string[] = []
       let timer: NodeJS.Timeout
 
@@ -53,7 +67,7 @@ function VitePluginOptimizePersist({ delay = 1000, filter = () => true }: Option
       }
 
       async function write() {
-        if (!newDeps.length)
+        if (!newDeps.length && !shouldReset)
           return
 
         debug(`writting to ${packageJsonPath}`)
@@ -61,6 +75,10 @@ function VitePluginOptimizePersist({ delay = 1000, filter = () => true }: Option
         pkg[field] = pkg[field] || {}
         const extend = pkg[field]
         extend.optimizeDeps = extend.optimizeDeps || {}
+
+        if (shouldReset)
+          extend.optimizeDeps.include = forceIncluded
+
         extend.optimizeDeps.include = Array.from(new Set([
           ...(extend.optimizeDeps.include || []),
           ...newDeps,
