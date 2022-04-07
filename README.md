@@ -1,3 +1,7 @@
+# DEPRECATED - You no longer need this plugin since Vite 2.9.1
+
+---
+
 # vite-plugin-optimize-persist
 
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-optimize-persist?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-optimize-persist)
