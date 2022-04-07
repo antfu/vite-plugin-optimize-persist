@@ -1,4 +1,5 @@
-# DEPRECATED - You no longer need this plugin since Vite 2.9.1
+# DEPRECATED
+You no longer need this plugin since Vite 2.9.1
 
 ---
 
