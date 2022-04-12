@@ -16,6 +16,7 @@ importers:
       eslint-plugin-jest: ^24.3.5
       esno: ^0.5.0
       fs-extra: ^10.0.0
+      local-pkg: ^0.4.1
       tsup: ^5.11.7
       typescript: ^4.2.4
       vite: ^2.2.1
@@ -23,6 +24,7 @@ importers:
     dependencies:
       debug: 4.3.2
       fs-extra: 10.0.0
+      local-pkg: 0.4.1
     devDependencies:
       '@antfu/eslint-config': 0.6.4_eslint@7.24.0+typescript@4.2.4
       '@antfu/ni': 0.5.8
@@ -2186,6 +2188,11 @@ packages:
       pify: 2.3.0
       strip-bom: 3.0.0
     dev: true
+
+  /local-pkg/0.4.1:
+    resolution: {integrity: sha512-lL87ytIGP2FU5PWwNDo0w3WhIo2gopIAxPg9RxDYF7m4rr5ahuZxP22xnJHIvaLTe4Z9P6uKKY2UHiwyB4pcrw==}
+    engines: {node: '>=14'}
+    dev: false
 
   /locate-path/2.0.0:
     resolution: {integrity: sha1-K1aLJl7slExtnA3pw9u7ygNUzY4=}
